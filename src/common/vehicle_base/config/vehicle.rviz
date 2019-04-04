@@ -25,7 +25,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2 Objects
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -48,7 +48,7 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 0.5
-      Cell Size: 50
+      Cell Size: 25
       Class: rviz/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -62,7 +62,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 4
+      Plane Cell Count: 16
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
@@ -196,7 +196,7 @@ Visualization Manager:
       Marker Topic: /perception/output/lidar_bbox_marker
       Name: Lidar Object
       Namespaces:
-        lidar bbox line list: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -212,7 +212,7 @@ Visualization Manager:
       Marker Topic: /perception/output/cam_short_bbox_marker
       Name: Camera Short Object
       Namespaces:
-        camera bbox line list: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -236,33 +236,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
-          Value: true
-        camera_long:
-          Value: true
-        conti_radar:
-          Value: true
-        localization:
-          Value: true
-        novatel:
-          Value: true
-        velodyne64:
-          Value: true
-        world:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          camera_long:
-            {}
-          conti_radar:
-            {}
-          velodyne64:
-            {}
+        {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image
@@ -313,7 +293,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 69.0978
+      Distance: 126.846
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -325,10 +305,10 @@ Visualization Manager:
         Z: 2.08952
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.464796
+      Pitch: 0.424796
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.12765
+      Yaw: 3.14265
     Saved: ~
 Window Geometry:
   Displays:

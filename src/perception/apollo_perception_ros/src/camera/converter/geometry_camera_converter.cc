@@ -53,7 +53,7 @@ bool GeometryCameraConverter::Init(std::string &file_path_config) {
   }
 
   std::string file_path_config_geo_cam_converter_intrinsic = 
-          file_path_config + "/config/params/pandora_camera_front_color_intrinsics.yaml";
+          file_path_config + "/config/calib/short_camera_intrinsics.yaml";
   if (!LoadCameraIntrinsics(file_path_config_geo_cam_converter_intrinsic)) {
     AERROR << "Failed to get camera intrinsics: "
            << file_path_config_geo_cam_converter_intrinsic;
