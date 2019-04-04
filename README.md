@@ -5,7 +5,7 @@
 However, there are some limitations.
   * Apollo (r3.0) is built upon a customized ROS environment, which is not compatible with normal ROS packages / plugins. 
   * Apollo (r3.5) abandons ROS and uses Cyber RT instead. 
-  * If you want to understand their code and test it with your own application, you will need to have a good understanding of the their framework before you can make any modifications.
+  * If you want to understand their code and test it with your own application, you will need to have a good understanding of their framework before you can make any modifications.
 
 Have you wondered, what if **everything can be run as a standard ROS node** and you can use all the familiar tools that are available in ROS? Then this repository is what you need!
 
