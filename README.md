@@ -1,8 +1,13 @@
 # Apollo Perception Standalone in ROS
 
-[Apollo](https://github.com/ApolloAuto/apollo) is the most mature and sophisticated autonomous driving platform that is open source right now. However, Apollo (r3.0) is built upon a customized ROS environment, which is not compatible with normal ROS packages / plugins. Apollo (r3.5) abandons ROS and uses Cyber RT instead. If you want to understand their code and test it with your own application, you will need to have a good understanding of the their framework before you can make any modifications.
+[Apollo](https://github.com/ApolloAuto/apollo) is the most mature and sophisticated autonomous driving platform that is open source right now. 
 
-Have you wondered, what if everything can be run as a standard ROS node and you can use all the familiar tools that are available in ROS? Then this repository is what you need!
+However, there are some limitations.
+  * Apollo (r3.0) is built upon a customized ROS environment, which is not compatible with normal ROS packages / plugins. 
+  * Apollo (r3.5) abandons ROS and uses Cyber RT instead. 
+  * If you want to understand their code and test it with your own application, you will need to have a good understanding of the their framework before you can make any modifications.
+
+Have you wondered, what if **everything can be run as a standard ROS node** and you can use all the familiar tools that are available in ROS? Then this repository is what you need!
 
 | ![Apollo Perception Architecture](apollo_perception_ros_architecture.png) | 
 |:--:| 
@@ -13,6 +18,8 @@ Have you wondered, what if everything can be run as a standard ROS node and you 
 | **Perception with demo-2.0.bag** |
 
 The obstacle perception module in Apollo (r3.0) is extracted and modified so that it can be run as a normal ROS node. Everything is inside docker environment. Detailed steps of building and running the perception module are listed as follows.
+
+I myself find learning Apollo's approach in perception very beneficial to helping me understand how the perception architecture is set up. I hope you find this repo useful as well.
 
 **All contributions are welcome!!** There are so many things that can be improved. Please raise issues and/or make pull requests if you would like to work on it too. Thank you.
 
