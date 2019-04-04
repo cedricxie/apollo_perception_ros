@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<robot name="vehicle">
+
+  <material name="sensor">
+    <color rgba="0 0.5 0 0.8"/>
+  </material>
+  <material name="transparent">
+    <color rgba="0 0 0 1.0"/>
+  </material>
+
+  <!-- Links -->
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 1.57" xyz="1.5 0.0 -0.2"/>
+      <geometry>
+        <mesh filename="package://vehicle_base/util/vehicle.dae" scale="1.1 1.1 1.1"/>
+            <!--<box size="4.98 1.88 1.37"/>-->
+      </geometry>
+      <material name="transparent"/>
+    </visual>
+  </link>
+
+  <link name='camera_long'>
+    <visual>
+      <geometry>
+          <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="sensor"/>
+    </visual>
+  </link>
+
+  <link name='conti_radar'>
+    <visual>
+      <geometry>
+          <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="sensor"/>
+    </visual>
+  </link>
+
+  <link name='velodyne64'>
+    <visual>
+      <geometry>
+          <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="sensor"/>
+    </visual>
+  </link>
+
+  <!-- Joints -->
+  <joint name="base_to_camera_long" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_long"/>
+    <origin xyz="1.9 0.0 1.05"/>
+  </joint>
+
+  <joint name="base_to_conti_radar" type="fixed">
+    <parent link="base_link"/>
+    <child link="conti_radar"/>
+    <origin rpy="0 0 0" xyz="2.9 -0.165 .4"/>
+  </joint>
+
+  <joint name="base_to_velodyne64" type="fixed">
+    <parent link="base_link"/>
+    <child link="velodyne64"/>
+    <origin rpy="0 0 0" xyz="1.1 0.0 1.7"/>
+  </joint>
+
+</robot>

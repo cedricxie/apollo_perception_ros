@@ -1,0 +1,5 @@
+name: "GeometryCameraConverter"
+version: "1.0.0"
+# obselete, do not use
+#camera_intrinsic_file: "../config/params/front_camera_intrinsics.yaml"
+camera_intrinsic_file: "/home/hradt/shared_dir/apollo_perception/src/perception/perception_yx/config/params/front_camera_intrinsics.yaml"

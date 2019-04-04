@@ -1,0 +1,9 @@
+name: "ROIFilter"
+version: "1.0.0"
+roi_x_min: -50.0
+roi_x_max: 50.0
+roi_y_min: -50.0
+roi_y_max: 50.0
+roi_z_min: -1.6
+roi_z_max: 100.0
+dist_gplane: 0.2

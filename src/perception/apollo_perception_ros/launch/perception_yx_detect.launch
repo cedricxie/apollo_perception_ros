@@ -1,0 +1,34 @@
+
+<launch>
+  
+  <env name="GLOG_minloglevel" value="1" />  <!-- 0: INFO; 1: WARNING; 2: ERROR; 3: FATAL -->
+
+  <node name="perception_yx_node" type="perception_yx_node" pkg="apollo_perception_ros" clear_params="true" output="screen">
+    <!-- parameters for sensor control -->
+    <param name="use_lidar" type="bool" value="true" />
+    <param name="use_cam_long" type="bool" value="true" />
+    <param name="use_cam_short" type="bool" value="true" />
+    <param name="use_radar" type="bool" value="false" />
+    <!-- parameters for visualization -->
+    <param name="vis_lidar_poly" type="bool" value="false" />
+    <param name="vis_cam_sphere" type="bool" value="false" />
+    <param name="vis_radar_sphere" type="bool" value="true" />
+    <param name="proj_ptcloud" type="bool" value="true" />
+    <!-- parameters for log level -->
+    <param name="log_lidar" type="bool" value="false" />
+    <param name="log_cam" type="bool" value="true" />
+    <param name="log_radar" type="bool" value="false" />
+    <param name="log_fusion" type="bool" value="true" />
+    <!-- other parameters -->
+    <param name="path_config_folder" type="string" value="$(find apollo_perception_ros)" />
+    <rosparam>
+    resize_factor: 1.0
+    <!-- frame id setting -->
+    frame_id_cam: camera_long
+    frame_id_lidar: velodyne64
+    frame_id_radar: conti_radar
+    frame_id_fusion: base_link
+    </rosparam>
+  </node>
+
+</launch>

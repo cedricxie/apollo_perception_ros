@@ -1,0 +1,6 @@
+name: "CNNSegmentation"
+version: "1.0.0"
+# obselete, do not use
+config_file: "/home/hradt/shared_dir/apollo_perception/src/perception/perception_yx/model/cnn_segmentation/cnnseg.conf"
+proto_file: "/home/hradt/shared_dir/apollo_perception/src/perception/perception_yx/model/cnn_segmentation/deploy.prototxt"
+weight_file: "/home/hradt/shared_dir/apollo_perception/src/perception/perception_yx/model/cnn_segmentation/deploy.caffemodel"

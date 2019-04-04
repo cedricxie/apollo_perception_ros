@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package apollo_perception_standalone.async_fusion_config;
+
+message ModelConfigs {
+  optional string name = 1 [ default = "AsyncFusion" ];
+  optional string version = 2 [ default = "1.0.0" ];
+  optional string match_method = 3 [ default = "hm_matcher" ];
+  optional float max_match_distance = 4 [ default = 4.0 ];
+  optional float max_lidar_invisible_period = 5 [ default = 0.25 ];
+  optional float max_radar_invisible_period = 6 [ default = 0.25 ];
+  optional float max_radar_confident_angle = 7 [ default = 30.0 ];
+  optional float min_radar_confident_distance = 8 [ default = 40.0 ];
+  optional float max_camera_invisible_period = 9 [ default = 0.25 ];
+  optional bool use_radar = 10 [ default = true ];
+  optional bool use_lidar = 11 [ default = true ];
+  optional bool use_camera = 12 [ default = true ];
+  optional string motion_method = 13 [ default = "kf" ];
+  // candidate values: "kf", "imf"
+  optional float lidar_process_noise_scale_factor = 14 [ default = 10.0 ];
+  optional float radar_process_noise_scale_factor = 15 [ default = 10.0 ];
+  optional float camera_process_noise_scale_factor = 16 [ default = 10.0 ];
+}

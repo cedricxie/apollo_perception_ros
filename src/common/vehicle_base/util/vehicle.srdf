@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<robot name="vehicle">
+
+   <virtual_joint name="world_joint" type="planar" parent_frame="odom" child_link="base_link"/>
+   <group name="base">
+       <joint name="world_joint"/>
+   </group>
+
+   <group name="body">
+       <link name="base_link"/>
+   </group>
+
+   <group name="sensors">
+       <link name="camera_long"/>
+       <link name="conti_radar"/>
+       <link name="velodyne64"/>
+       <joint name="base_to_camera_long"/>
+       <joint name="base_to_conti_radar"/>
+       <joint name="base_to_velodyne64"/>
+   </group>
+
+   <disable_collision link1="base_link" link2="camera_long"/>
+   <disable_collision link1="base_link" link2="conti_radar"/>
+   <disable_collision link1="base_link" link2="velodyne64"/>
+</robot>

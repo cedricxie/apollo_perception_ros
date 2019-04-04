@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package apollo_perception_standalone.roi_filter_config;
+
+message ModelConfigs {
+  optional string name = 1 [ default = "ROIFilter" ];
+  optional string version = 2 [ default = "1.0.0" ];
+  optional double roi_x_min = 3 [ default = -15.0 ];
+  optional double roi_x_max = 4 [ default = 15.0 ];
+  optional double roi_y_min = 5 [ default = -45.0 ];
+  optional double roi_y_max = 6 [ default = 45.0 ];
+  optional double roi_z_min = 7  [ default = -1.7 ];
+  optional double roi_z_max = 8 [ default = 15.0 ];
+  optional double dist_gplane = 9 [ default = 0.3 ];
+}

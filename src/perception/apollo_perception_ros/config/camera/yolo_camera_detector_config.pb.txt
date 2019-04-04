@@ -1,0 +1,5 @@
+name: "YoloCameraDetector"
+version: "1.0.0"
+# obselete, do not use
+#yolo_root: "../model/yolo_camera_detector"
+yolo_root: "/home/hradt/shared_dir/apollo_perception/src/perception/perception_yx/model/yolo_camera_detector"
