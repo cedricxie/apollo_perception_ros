@@ -24,10 +24,11 @@ I myself find learning Apollo's approach in perception very beneficial to helpin
 **All contributions are welcome!!** There are so many things that can be improved. Please raise issues and/or make pull requests if you would like to work on it too. Thank you.
 
 ## Environment Information
-| **Dependencies**                     	| Image Environment  	|
+The system is tested with Nvidia GeForce GTX 1080 Ti and 1070 Max-Q. Please install Nvidia Driver, [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker).
+| **Dependencies**                  	| Image Environment  	|
 |-----------------------------------	|--------------------	|
 | Nvidia Driver (Tested on 384.130) 	| Ubuntu 14.04       	|
-| [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker) (Tested on 2)       	| Cuda 8.0 + Cudnn 7 	|
+| Nvidia Docker (Tested on 2)       	| Cuda 8.0 + Cudnn 7 	|
 
 ## Building and Running
 1. Clone Repository in Host
@@ -49,11 +50,11 @@ catkin build
 source devel/setup.bash
 ```
 
-5. Launch Perception Node 
+5. Launch Perception Node  
 ```roslaunch vehicle_base detect_sim.launch```
 
-6. Playback Demo-2.0.bag from Apollo
-```rosbag play demo-2.0.bag --clock```
+6. Playback Demo-2.0.bag from Apollo  
+```rosbag play demo-2.0.bag --clock```  
 The bag can be downloaded at [Apollo Data Open Platform](http://data.apollo.auto), Vehicle System Demo Data, with file name ```demo-sensor-data-apollo-2.0.tar.gz```.
 
 ## Known issues
