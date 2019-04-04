@@ -1,7 +1,5 @@
 resize_factor: 1.0
 # camera long
-# https://github.com/cedricxie/apollo/blob/r2.0.0/modules/perception/data/params/long_camera_intrinsics.yaml
-# https://github.com/cedricxie/apollo/blob/r2.0.0/modules/perception/data/params/long_camera_extrinsics.yaml
 0:
   header:
     seq: 0
@@ -12,14 +10,14 @@ resize_factor: 1.0
   child_frame_id: long_camera
   transform:
     rotation:
-      x: -0.025036109359418188
-      y: 0.01112271317777528
-      z: -0.0006417478985479384
-      w: 0.9963155773545259
+      x: -0.02828665385234772
+      y: 0.007152328022456782
+      z: -0.0002024016007883244
+      w: 0.9995742435913846
     translation:
-      x: 0.35
-      y: -0.0006574037270484494
-      z: -0.07860141667671063
+      x: 0.275
+      y: 0
+      z: 0
   height: 1080
   width: 1920
   distortion_model: plumb_bob
@@ -32,26 +30,26 @@ resize_factor: 1.0
 # https://github.com/cedricxie/apollo/blob/r2.0.0/modules/perception/data/params/short_camera_extrinsics.yaml
 1:
   header:
+    seq: 0
     stamp:
       secs: 0
       nsecs: 0
     frame_id: velodyne64
-    seq: 0
   child_frame_id: short_camera
   transform:
     rotation:
-      y: 0.465442900447225
-      x: -0.5001394746772327
-      z: -0.5111293453577122
-      w: 0.5215076266048779
+      y: 0.4728588409681856
+      x: -0.4760328629850302
+      w: 0.5174664554141758
+      z: -0.5310609168424923
     translation:
       x: 0.3476404596108391
-      y: 0.2106821881984495
+      y: 0.1106821881984495
       z: 0.06704852122779535
   height: 1080
   width: 1920
   distortion_model: plumb_bob
-  D: [-0.562958, 0.323184, -0.001498, 0.03492, 0.0]
-  K: [2028.79502, 0.0, 959.5, 0.0, 2035.305155, 539.5, 0.0, 0.0, 1.0]
+  D: [-0.535253, 0.259291, 0.004276, -0.000503, 0.0]
+  K: [1959.678185, 0.0, 1003.592207, 0.0, 1953.786100, 507.820634, 0.0, 0.0, 1.0]
   R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
-  P: [1685.548583984375, 0.0, 955.0389019755967, 0.0, 0.0, 1877.2034912109375, 491.75418425749376, 0.0, 0.0, 0.0, 1.0, 0.0]
+  P: [1729.4515380859375, 0.0, 997.0791139046996, 0.0, 0.0, 1926.0577392578125, 571.4609883012963, 0.0, 0.0, 0.0, 1.0, 0.0]
