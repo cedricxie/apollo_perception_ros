@@ -37,7 +37,7 @@ git clone https://github.com/cedricxie/apollo_perception_ros
 ```
 
 2. Pull Dokcer Image  
-```docker pull cedricxie/apollo_perception_ros```
+```docker pull cedricxie/apollo-perception-ros```
 
 3. Enter Docker Container  
 ```cd ~/shared_dir/apollo_perception_ros && ./docker/run.sh```
