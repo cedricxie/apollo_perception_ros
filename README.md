@@ -13,6 +13,10 @@ Have you wondered, what if **everything can be run as a standard ROS node** and 
 |:--:| 
 | **Apollo Perception Architecture** |
 
+| ![Apollo Perception Overview](Apollo_Perception_Details_05012019.gif) | 
+|:--:| 
+| **Apollo Perception Overview** |
+
 | ![Demo of Perception](apollo_perception_ros_demo_2_0.gif) | 
 |:--:| 
 | **Perception with demo-2.0.bag** |
