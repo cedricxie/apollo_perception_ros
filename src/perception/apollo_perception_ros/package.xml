@@ -7,7 +7,7 @@
   </description>
   <maintainer email="cedricxie@gmail.com">Yuesong Xie</maintainer>
   <author>Yuesong Xie</author>
-  <license>TODO</license>
+  <license>Apache-2.0</license>
   <url type="website">http://www.xieyuesong.com/</url>
 
   <buildtool_depend>catkin</buildtool_depend>
