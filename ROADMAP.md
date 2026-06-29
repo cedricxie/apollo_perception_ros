@@ -8,10 +8,10 @@ compatibility improvements where feasible.
 
 ## 2026 Q3 — Maintenance restart (Phase 1)
 
-- [ ] Add Apache-2.0 LICENSE, NOTICE, third-party notices
-- [ ] Reposition README (status, audience, limitations)
-- [ ] Add CONTRIBUTING.md and SECURITY.md
-- [ ] Triage open issues and add labels
+- [x] Add Apache-2.0 LICENSE, NOTICE, third-party notices
+- [x] Reposition README (status, audience, limitations)
+- [x] Add CONTRIBUTING.md and SECURITY.md
+- [x] Triage open issues and add labels
 - [ ] Publish `v0.1.0-historical` release
 - [ ] Document demo bag acquisition and playback
 - [ ] Publish supported environment matrix

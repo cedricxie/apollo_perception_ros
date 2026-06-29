@@ -11,7 +11,7 @@ maintenance restart.
 Please report security issues privately:
 
 - GitHub: use **Report a vulnerability** on the Security tab, or
-- Email the maintainer directly (see GitHub profile).
+- Email: cedricxie@gmail.com
 
 Do not open public issues for exploitable vulnerabilities.
 
