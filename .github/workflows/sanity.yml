@@ -1,0 +1,90 @@
+name: Sanity
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  docs-and-policy:
+    name: Docs and policy files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify required policy and docs files
+        run: |
+          set -euo pipefail
+          required_files=(
+            LICENSE
+            NOTICE
+            THIRD_PARTY_NOTICES.md
+            ROADMAP.md
+            CONTRIBUTING.md
+            SECURITY.md
+            docs/KNOWN_ISSUES.md
+            docs/SUPPORTED_ENVIRONMENTS.md
+            docs/DEMO_BAG.md
+          )
+          for file in "${required_files[@]}"; do
+            test -f "$file"
+          done
+
+      - name: Reject TODO license fields in package.xml
+        run: |
+          set -euo pipefail
+          if rg -n '<license>TODO</license>' --glob '**/package.xml'; then
+            echo 'Found package.xml files with TODO license fields.'
+            exit 1
+          fi
+
+      - name: Check internal markdown links
+        run: |
+          python3 <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          root = Path(".")
+          markdown_files = [root / "README.md", root / "ROADMAP.md", root / "CONTRIBUTING.md"]
+          markdown_files.extend(sorted((root / "docs").glob("*.md")))
+
+          link_pattern = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+          errors = []
+
+          for markdown_file in markdown_files:
+              text = markdown_file.read_text(encoding="utf-8")
+              for match in link_pattern.finditer(text):
+                  target = match.group(1).strip()
+                  if target.startswith(("http://", "https://", "mailto:", "#")):
+                      continue
+                  path = target.split("#", 1)[0]
+                  if not path:
+                      continue
+                  resolved = (markdown_file.parent / path).resolve()
+                  if not resolved.exists():
+                      errors.append(f"{markdown_file}: broken relative link -> {target}")
+
+          if errors:
+              print("Broken internal markdown links found:")
+              for error in errors:
+                  print(error)
+              sys.exit(1)
+
+          print(f"Checked internal links in {len(markdown_files)} markdown files.")
+          PY
+
+  shell-scripts:
+    name: Docker shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
+
+      - name: Run shellcheck on docker scripts
+        run: |
+          set -euo pipefail
+          # Legacy scripts use unquoted vars; keep the gate focused on real errors.
+          shellcheck -e SC2086,SC2154 docker/run.sh docker/build.sh

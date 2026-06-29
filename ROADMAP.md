@@ -20,7 +20,7 @@ compatibility improvements where feasible.
 
 - [ ] Add issue/PR templates
 - [ ] Fix broken documentation links
-- [ ] Add lightweight CI (markdown / shellcheck / repo structure)
+- [x] Add lightweight CI (markdown / shellcheck / repo structure)
 - [x] Consolidate CUDA / Docker troubleshooting guide (`docs/KNOWN_ISSUES.md`)
 
 ## Future (best-effort)
