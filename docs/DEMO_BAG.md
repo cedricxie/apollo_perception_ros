@@ -90,7 +90,7 @@ rosbag play ~/shared_dir/demo-2.0.bag --clock
 | --- | --- |
 | Dropbox link fails | Try the direct-download `dl=1` URL above. If it stops working, comment on issue #26. |
 | Bag not found in container | Confirm the file is under the mounted `shared_dir` path, not only on the host outside the mount. |
-| No perception output | Verify topics with `rostopic list` and check GPU/Docker setup. See README known limitations. |
+| No perception output | Verify topics with `rostopic list` and check GPU/Docker setup. See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [SUPPORTED_ENVIRONMENTS.md](SUPPORTED_ENVIRONMENTS.md). |
 | Radar not working | Continental radar messages in the bag use Protobuf and are not fully supported in this port. |
 
 ## Related issues

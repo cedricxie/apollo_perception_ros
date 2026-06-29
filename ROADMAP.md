@@ -14,14 +14,14 @@ compatibility improvements where feasible.
 - [x] Triage open issues and add labels
 - [x] Publish `v0.1.0-historical` release
 - [x] Document demo bag acquisition and playback
-- [ ] Publish supported environment matrix
+- [x] Publish supported environment matrix
 
 ## 2026 Q4 — Documentation & CI (Phase 2)
 
 - [ ] Add issue/PR templates
 - [ ] Fix broken documentation links
 - [ ] Add lightweight CI (markdown / shellcheck / repo structure)
-- [ ] Consolidate CUDA / Docker troubleshooting guide
+- [x] Consolidate CUDA / Docker troubleshooting guide (`docs/KNOWN_ISSUES.md`)
 
 ## Future (best-effort)
 

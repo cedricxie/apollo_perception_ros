@@ -47,9 +47,9 @@ It is **not** a production autonomous driving stack.
 
 ## Known limitations
 
-- Requires a legacy software stack (Ubuntu 14.04, CUDA 8, old Docker GPU runtime)
-- Continental radar bags use Protobuf messages and are not fully supported
-- Modern GPUs (RTX series) often fail without rebuilding CUDA artifacts
+- Requires a legacy software stack (Ubuntu 14.04, CUDA 8, old Docker GPU runtime); see [docs/SUPPORTED_ENVIRONMENTS.md](docs/SUPPORTED_ENVIRONMENTS.md)
+- Continental radar bags use Protobuf messages and are not fully supported; see [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#continental-radar-in-apollo-demo-bag)
+- Modern GPUs (RTX series) often fail without rebuilding CUDA artifacts; see [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#cuda-and-gpu-compatibility)
 - No ego-motion compensation, sequence fuser, or planning modules (see [ROADMAP.md](ROADMAP.md))
 
 ## Maintenance roadmap
@@ -62,6 +62,10 @@ See [ROADMAP.md](ROADMAP.md) for the 2026 plan. Initial focus:
 4. Lightweight CI and contribution guidelines
 
 ## Environment Information
+
+See [docs/SUPPORTED_ENVIRONMENTS.md](docs/SUPPORTED_ENVIRONMENTS.md) for the
+reference and unverified environment matrix.
+
 The system is tested on Nvidia GeForce GTX 1080 Ti and 1070 Max-Q. Please install **Nvidia Driver**, [**Docker**](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and [**Nvidia Docker**](https://github.com/NVIDIA/nvidia-docker).
 
 | **Dependencies**                  	| Image Environment  	|
@@ -99,14 +103,11 @@ See **[docs/DEMO_BAG.md](docs/DEMO_BAG.md)** for download links and setup. The
 original Apollo open data platform (`http://data.apollo.auto`) may be
 unavailable; a verified maintainer mirror is documented there.
 
-## Known issues
-1. During building, a C++11 toolchain error may appear. Running `catkin build` again sometimes succeeds. If it persists, verify you are using the provided Docker image and compiler toolchain.
+## Related documentation
 
-```
-/usr/include/c++/4.8/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
-```
-
-2. Continental radar detection messages are in Protobuf format inside the ROS bag. Therefore it is not currently supported. However if you have your own radar, you can utilize the modest radar detector in the perception module to integrate into the system.
+- **[docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md)** — reported problems, workarounds, and links to GitHub issues
+- **[docs/SUPPORTED_ENVIRONMENTS.md](docs/SUPPORTED_ENVIRONMENTS.md)** — reference and unverified environment matrix
+- **[docs/DEMO_BAG.md](docs/DEMO_BAG.md)** — demo bag download and playback
 
 ## Roadmap
 
