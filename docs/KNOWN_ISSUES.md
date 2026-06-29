@@ -53,6 +53,22 @@ Related docs:
 
 ## CUDA and GPU compatibility
 
+### CUDA 10+ build failures
+
+**Symptoms**
+
+- Build fails on CUDA 10 with errors such as `incomplete type is not allowed` in `cuda_util/util.cu`
+
+**Status:** Unsupported. The reference Docker image targets CUDA 8.
+
+**Workaround**
+
+- Use the provided CUDA 8 Docker workflow rather than porting to CUDA 10+
+
+**Reported in:** [#6](https://github.com/cedricxie/apollo_perception_ros/issues/6)
+
+---
+
 ### `invalid device function`
 
 **Symptoms**
@@ -66,7 +82,7 @@ Related docs:
 - Prefer the reference GTX 10-series + CUDA 8 Docker workflow
 - Rebuilding CUDA artifacts for newer GPUs is not part of the reference maintenance path
 
-**Reported in:** [#6](https://github.com/cedricxie/apollo_perception_ros/issues/6), [#18](https://github.com/cedricxie/apollo_perception_ros/issues/18), [#27](https://github.com/cedricxie/apollo_perception_ros/issues/27)
+**Reported in:** [#18](https://github.com/cedricxie/apollo_perception_ros/issues/18), [#27](https://github.com/cedricxie/apollo_perception_ros/issues/27)
 
 ---
 
@@ -198,7 +214,7 @@ Related docs:
 
 - Disable radar in launch parameters, or integrate your own radar with the modest radar detector code path
 
-**Reported in:** Documented limitation (see README). Radar integration questions also appear in [#15](https://github.com/cedricxie/apollo_perception_ros/issues/15#issuecomment-867289918).
+**Reported in:** [#15](https://github.com/cedricxie/apollo_perception_ros/issues/15#issuecomment-867289918) (radar integration question on a demo-bag thread)
 
 ---
 

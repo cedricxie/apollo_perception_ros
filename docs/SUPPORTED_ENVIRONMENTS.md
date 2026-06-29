@@ -41,8 +41,7 @@ For common failures on other setups, see [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
 
 General hardware expectations are discussed in
 [#5](https://github.com/cedricxie/apollo_perception_ros/issues/5).
-Docker is strongly recommended but not theoretically mandatory
- ([#4](https://github.com/cedricxie/apollo_perception_ros/issues/4)).
+Docker is strongly recommended but not theoretically mandatory ([#4](https://github.com/cedricxie/apollo_perception_ros/issues/4)).
 
 If your setup differs, please open an issue with GPU model, driver version, OS,
 Docker command, and build/runtime logs.

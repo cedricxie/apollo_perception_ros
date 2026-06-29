@@ -49,7 +49,7 @@ It is **not** a production autonomous driving stack.
 
 - Requires a legacy software stack (Ubuntu 14.04, CUDA 8, old Docker GPU runtime); see [docs/SUPPORTED_ENVIRONMENTS.md](docs/SUPPORTED_ENVIRONMENTS.md)
 - Continental radar bags use Protobuf messages and are not fully supported; see [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#continental-radar-in-apollo-demo-bag)
-- Modern GPUs (RTX series) often fail without rebuilding CUDA artifacts; see [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#invalid-device-function)
+- Modern GPUs (RTX series) often fail without rebuilding CUDA artifacts; see [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md#cuda-and-gpu-compatibility)
 - No ego-motion compensation, sequence fuser, or planning modules (see [ROADMAP.md](ROADMAP.md))
 
 ## Maintenance roadmap
@@ -103,10 +103,11 @@ See **[docs/DEMO_BAG.md](docs/DEMO_BAG.md)** for download links and setup. The
 original Apollo open data platform (`http://data.apollo.auto`) may be
 unavailable; a verified maintainer mirror is documented there.
 
-## Known issues
+## Related documentation
 
-See **[docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md)** for reported problems,
-workarounds, and links to the corresponding GitHub issues.
+- **[docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md)** — reported problems, workarounds, and links to GitHub issues
+- **[docs/SUPPORTED_ENVIRONMENTS.md](docs/SUPPORTED_ENVIRONMENTS.md)** — reference and unverified environment matrix
+- **[docs/DEMO_BAG.md](docs/DEMO_BAG.md)** — demo bag download and playback
 
 ## Roadmap
 
