@@ -1,5 +1,9 @@
 # Apollo Perception Standalone in ROS
 
+> **Status (2026):** Maintenance restarted. This project ports parts of Apollo 3.0
+> perception into a standard ROS workflow. Original Apollo code is licensed under
+> Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
 [Apollo](https://github.com/ApolloAuto/apollo) is the most mature and sophisticated autonomous driving platform that is open source right now. 
 
 However, there are some limitations.
@@ -27,6 +31,36 @@ I myself find learning Apollo's approach in perception very beneficial to helpin
 
 **All contributions are welcome!!** There are so many things that can be improved. Please raise issues and/or make pull requests if you would like to work on it too. Thank you.
 
+## Current status
+
+This repository is a **historical and educational ROS port** of Apollo 3.0
+perception. It is actively maintained again as of 2026, with a focus on
+documentation, issue triage, license clarity, and reproducibility guidance.
+
+It is **not** a production autonomous driving stack.
+
+## Who is this for?
+
+- Students and researchers learning Apollo-style perception architecture
+- Developers who want to experiment with LiDAR / camera / fusion pipelines in ROS
+- Maintainers adapting legacy Apollo perception code to teaching labs or simulators
+
+## Known limitations
+
+- Requires a legacy software stack (Ubuntu 14.04, CUDA 8, old Docker GPU runtime)
+- Continental radar bags use Protobuf messages and are not fully supported
+- Modern GPUs (RTX series) often fail without rebuilding CUDA artifacts
+- No ego-motion compensation, sequence fuser, or planning modules (see [ROADMAP.md](ROADMAP.md))
+
+## Maintenance roadmap
+
+See [ROADMAP.md](ROADMAP.md) for the 2026 plan. Initial focus:
+
+1. License and attribution clarity
+2. Issue triage and documentation
+3. Demo bag and environment matrix
+4. Lightweight CI and contribution guidelines
+
 ## Environment Information
 The system is tested on Nvidia GeForce GTX 1080 Ti and 1070 Max-Q. Please install **Nvidia Driver**, [**Docker**](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and [**Nvidia Docker**](https://github.com/NVIDIA/nvidia-docker).
 
@@ -42,7 +76,7 @@ mkdir ~/shared_dir && cd ~/shared_dir
 git clone https://github.com/cedricxie/apollo_perception_ros
 ```
 
-2. Pull Dokcer Image  
+2. Pull Docker Image  
 ```docker pull cedricxie/apollo-perception-ros```
 
 3. Enter Docker Container  
@@ -63,14 +97,18 @@ source devel/setup.bash
 The bag can be downloaded at [Apollo Data Open Platform](http://data.apollo.auto), Vehicle System Demo Data, with file name ```demo-sensor-data-apollo-2.0.tar.gz```.
 
 ## Known issues
-1. During building process, an error such as follows might occur. Usually do ```catkin build``` again can skip the problem. I am still trying to figure out how to complete solve it. Let me know if you find out a solution.
+1. During building, a C++11 toolchain error may appear. Running `catkin build` again sometimes succeeds. If it persists, verify you are using the provided Docker image and compiler toolchain.
+
 ```
 /usr/include/c++/4.8/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
 ```
 
 2. Continental radar detection messages are in Protobuf format inside the ROS bag. Therefore it is not currently supported. However if you have your own radar, you can utilize the modest radar detector in the perception module to integrate into the system.
 
-## To Do:
-1. Add ego motion compensation.
-2. Add sequence type fuser
-3. Add Prediction / Planning modules.
+## Roadmap
+
+Longer-term technical goals are tracked in [ROADMAP.md](ROADMAP.md), including:
+
+1. Ego motion compensation
+2. Sequence type fuser
+3. Prediction / Planning modules (out of current scope)
