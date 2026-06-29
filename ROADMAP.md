@@ -13,7 +13,7 @@ compatibility improvements where feasible.
 - [x] Add CONTRIBUTING.md and SECURITY.md
 - [x] Triage open issues and add labels
 - [x] Publish `v0.1.0-historical` release
-- [ ] Document demo bag acquisition and playback
+- [x] Document demo bag acquisition and playback
 - [ ] Publish supported environment matrix
 
 ## 2026 Q4 — Documentation & CI (Phase 2)

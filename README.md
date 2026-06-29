@@ -93,8 +93,11 @@ source devel/setup.bash
 ```roslaunch vehicle_base detect_sim.launch```
 
 6. Playback Demo-2.0.bag from Apollo  
-```rosbag play demo-2.0.bag --clock```  
-The bag can be downloaded at [Apollo Data Open Platform](http://data.apollo.auto), Vehicle System Demo Data, with file name ```demo-sensor-data-apollo-2.0.tar.gz```.
+```rosbag play ~/shared_dir/demo-2.0.bag --clock```  
+
+See **[docs/DEMO_BAG.md](docs/DEMO_BAG.md)** for download links and setup. The
+original Apollo open data platform (`http://data.apollo.auto`) may be
+unavailable; a verified maintainer mirror is documented there.
 
 ## Known issues
 1. During building, a C++11 toolchain error may appear. Running `catkin build` again sometimes succeeds. If it persists, verify you are using the provided Docker image and compiler toolchain.
