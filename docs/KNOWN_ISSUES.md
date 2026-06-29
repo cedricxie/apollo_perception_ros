@@ -15,22 +15,41 @@ Related docs:
 
 ## Build and toolchain
 
-### C++11 / catkin build errors
+### C++11 / catkin / ROS environment errors
 
 **Symptoms**
 
 - `#error This file requires compiler and library support for the ISO C++ 2011 standard`
 - Intermittent `catkin build` failures on first attempt
+- `catkin CMake module was not found` or missing `roscppConfig.cmake`
+- Building outside Docker without a sourced ROS environment
 
 **Status:** Known on non-reference toolchains; often transient inside the reference Docker image.
 
 **Workaround**
 
 - Build inside `cedricxie/apollo-perception-ros` Docker
+- Source ROS inside the container before building (e.g. `source /opt/ros/indigo/setup.bash`)
 - Retry `catkin build`
 - Capture the first hard error if warnings are only about deprecated GPU targets
 
-**Reported in:** [#3](https://github.com/cedricxie/apollo_perception_ros/issues/3), [#13](https://github.com/cedricxie/apollo_perception_ros/issues/13)
+**Reported in:** [#3](https://github.com/cedricxie/apollo_perception_ros/issues/3), [#13](https://github.com/cedricxie/apollo_perception_ros/issues/13), [#2](https://github.com/cedricxie/apollo_perception_ros/issues/2)
+
+---
+
+### Eigen version mismatch (historical)
+
+**Symptoms**
+
+- Runtime assertion or crash when starting `perception_yx_node` after a local build
+
+**Status:** Resolved in at least one report by downgrading Eigen (for example from 3.3.90 to 3.2.10).
+
+**Workaround**
+
+- Prefer the reference Docker image rather than mixing host Eigen versions
+
+**Reported in:** [#10](https://github.com/cedricxie/apollo_perception_ros/issues/10) (closed)
 
 ---
 
@@ -64,6 +83,7 @@ Related docs:
 **Workaround**
 
 - Use the provided CUDA 8 Docker workflow rather than porting to CUDA 10+
+- Community report on [#6](https://github.com/cedricxie/apollo_perception_ros/issues/6): adding OpenCV headers to `cuda_util/util.cu` may unblock some CUDA 10 builds, but this is **unverified** and not part of the maintained workflow
 
 **Reported in:** [#6](https://github.com/cedricxie/apollo_perception_ros/issues/6)
 
@@ -132,7 +152,7 @@ Related docs:
 - Unclear where to place or how to play `demo-2.0.bag`
 - Questions about Velodyne-only bags vs Apollo demo bag
 
-**Status:** Documented with a verified maintainer mirror.
+**Status:** Documented with a verified maintainer mirror. This repo is tested with the Apollo 2.0 vehicle demo bag, not arbitrary Velodyne-only bags.
 
 **Workaround**
 
@@ -151,7 +171,7 @@ Related docs:
 - `Cannot transform frame: base_link to frame camera_long`
 - `failed to get trans at timestamp`
 
-**Status:** Usually launch order or `use_sim_time` mismatch.
+**Status:** Usually launch order or `use_sim_time` mismatch. [#11](https://github.com/cedricxie/apollo_perception_ros/issues/11) may also reflect a deeper coordinate-transform bug and remains open.
 
 **Workaround**
 
@@ -169,7 +189,7 @@ Related docs:
 
 - `/perception/output/fusion_velocity_marker` positions are `0`
 
-**Status:** Under investigation; often related to TF/timestamp alignment or incomplete sensor inputs.
+**Status:** Under investigation; often related to TF/timestamp alignment, incomplete sensor inputs, or GPU incompatibility. One report ([#24](https://github.com/cedricxie/apollo_perception_ros/issues/24)) improved after switching from RTX 4000 to GTX 1050 Ti.
 
 **Workaround**
 
@@ -188,15 +208,16 @@ Related docs:
 - `unsupported encoding yuyv`
 - Expectation that LiDAR clustering requires camera input
 
-**Status:** Demo workflow requires both camera and LiDAR topics; image display depends on topic encoding and sim time settings.
+**Status:** Demo workflow requires both camera and LiDAR topics. Camera topics in the Apollo bag may use `yuyv`, which RViz does not display directly; the code path also logs that `yuyv` is not supported for conversion.
 
 **Workaround**
 
 - Use `detect_sim.launch` + `rosbag play ... --clock`
 - See [DEMO_BAG.md](DEMO_BAG.md)
+- Check perception output image topics in RViz instead of the raw bag encoding if needed
 - Share `rostopic list` and camera topic metadata if it persists
 
-**Reported in:** [#16](https://github.com/cedricxie/apollo_perception_ros/issues/16)
+**Reported in:** [#16](https://github.com/cedricxie/apollo_perception_ros/issues/16), [#21](https://github.com/cedricxie/apollo_perception_ros/issues/21) (closed)
 
 ---
 
@@ -207,14 +228,16 @@ Related docs:
 **Symptoms**
 
 - Radar fusion unavailable when playing the stock Apollo demo bag
+- Questions about why radar-related code is commented out
 
-**Status:** Continental radar messages in the bag use Protobuf and are not fully supported in this ROS port.
+**Status:** Continental radar messages in the bag use Protobuf and are not fully supported in this ROS port. By default, `use_radar` is `false` in `perception_yx_detect.launch`, and the Continental radar topic subscription in `perception_yx.cpp` is commented out.
 
 **Workaround**
 
-- Disable radar in launch parameters, or integrate your own radar with the modest radar detector code path
+- Leave radar disabled for the demo bag workflow
+- To experiment with your own radar, use the modest radar detector code path and provide a compatible ROS message source
 
-**Reported in:** [#15](https://github.com/cedricxie/apollo_perception_ros/issues/15#issuecomment-867289918) (radar integration question on a demo-bag thread)
+**Reported in:** [#15](https://github.com/cedricxie/apollo_perception_ros/issues/15#issuecomment-867289918), [#16](https://github.com/cedricxie/apollo_perception_ros/issues/16), [#18](https://github.com/cedricxie/apollo_perception_ros/issues/18)
 
 ---
 
@@ -255,19 +278,21 @@ Related docs:
 
 ## Documentation
 
-### Broken documentation links
+### ROS distro / CMake path confusion
 
 **Symptoms**
 
-- README or docs reference missing paths (e.g. `CMakeLists.txt` link)
+- Confusion about whether the project targets ROS Indigo or Kinetic
+- References to `src/perception/CMakeLists.txt` or Kinetic catkin paths
 
-**Status:** Tracked for cleanup.
+**Status:** The reference workflow is the Ubuntu 14.04 Docker image with the catkin packages under `src/perception/apollo_perception_ros/`. Some older reports used outdated paths or non-reference ROS installs.
 
 **Workaround**
 
-- Open a PR or comment on the issue with the correct target path
+- Use the Docker workflow in the README
+- See [SUPPORTED_ENVIRONMENTS.md](SUPPORTED_ENVIRONMENTS.md)
 
-**Reported in:** [#9](https://github.com/cedricxie/apollo_perception_ros/issues/9)
+**Reported in:** [#9](https://github.com/cedricxie/apollo_perception_ros/issues/9), [#14](https://github.com/cedricxie/apollo_perception_ros/issues/14)
 
 ---
 
