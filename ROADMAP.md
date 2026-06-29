@@ -12,7 +12,7 @@ compatibility improvements where feasible.
 - [x] Reposition README (status, audience, limitations)
 - [x] Add CONTRIBUTING.md and SECURITY.md
 - [x] Triage open issues and add labels
-- [ ] Publish `v0.1.0-historical` release
+- [x] Publish `v0.1.0-historical` release
 - [ ] Document demo bag acquisition and playback
 - [ ] Publish supported environment matrix
 
