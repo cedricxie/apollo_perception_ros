@@ -4,7 +4,7 @@ Thank you for helping improve this educational Apollo perception port.
 
 ## Before you start
 
-- Read [ROADMAP.md](ROADMAP.md) and [README.md](README.md#known-limitations)
+- Read [ROADMAP.md](ROADMAP.md), [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md), and [README.md](README.md#known-limitations)
 - Check [open issues](https://github.com/cedricxie/apollo_perception_ros/issues)
 - Prefer Docker-based reproduction when possible
 
