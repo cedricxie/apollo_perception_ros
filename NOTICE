@@ -1,0 +1,16 @@
+Apollo Perception ROS
+Copyright 2018-2026 Yuesong Xie
+
+This product includes software developed as part of the Apollo project
+(https://github.com/ApolloAuto/apollo).
+
+Portions of this repository are derived from Apollo 3.0 perception modules and
+are Copyright The Apollo Authors, licensed under the Apache License, Version 2.0.
+
+ROS adaptation, Docker packaging, launch files, documentation updates, and
+ongoing maintenance changes in this repository are Copyright Yuesong Xie,
+licensed under the Apache License, Version 2.0.
+
+Modified files that originate from Apollo should retain upstream copyright and
+license notices where present. See THIRD_PARTY_NOTICES.md for additional
+dependency attribution.
